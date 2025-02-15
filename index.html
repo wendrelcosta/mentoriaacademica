@@ -8,21 +8,63 @@
   <!-- Adicionando o CSS do Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-    /* Estilos para telas menores que 768px (celulares) */
-    @media (max-width: 767px) {
+    /* Estilos para telas menores que 768px (celulares) responsividade*/
+    .plagio_img, .plagio_img2  {
+      display: flex;
+      flex-wrap: wrap;
+      /* Permite que os elementos quebrem para a próxima linha */
+      align-items: center;
+      /* Centraliza verticalmente */
+      justify-content: space-between;
+      /* Distribui os elementos horizontalmente */
+    }
 
-      /* Oculta o formulário */
-      .formulario {
-        display: none;
+    .img1,
+    .img2 {
+      order: 1;
+      /* Define a ordem da imagem como 1 */
+      flex: 1;
+      /* Ocupa espaço disponível igualmente */
+      max-width: 100%;
+      /* Largura máxima da imagem */
+      margin: 10px;
+      /* Espaçamento entre a imagem e o texto */
+      justify-content: center;
+    }
+
+    .text-content {
+      order: 2;
+      /* Define a ordem do texto como 2 */
+      flex: 1;
+      /* Ocupa espaço disponível igualmente */
+      max-width: 100%;
+      /* Largura máxima do texto */
+      margin: 10px;
+      /* Espaçamento entre a imagem e o texto */
+      text-align: center;
+      /* Centraliza o texto horizontalmente */
+    }
+
+    /* Media query para telas menores que 768px (celulares) */
+    @media (max-width: 767px) {
+      .plagio_img, .plagio_img2 {
+        flex-direction: column;
+        /* Alinha os elementos verticalmente */
       }
 
-      /* Ajusta outros elementos para telas menores */
-      .elemento {
-        width: 100%;
+      .img1,
+      .img2,
+      .text-content {
+        order: 1;
+        /* Todos os elementos na mesma ordem */
+        max-width: 100%;
+        /* Ocupa toda a largura */
+        margin: 10px 0;
+        /* Espaçamento vertical */
       }
     }
 
-    /* Estilos para telas maiores que 768px (tablets e desktops) */
+    /* Estilos para telas maiores que 768px (tablets e desktops)responsividade formulario */
     @media (min-width: 768px) {
 
       /* Exibe o formulário */
@@ -140,7 +182,7 @@
       height: auto;
     }
 
-    /* Media Query para telas grandes */
+    /* Media Query para telas grandes responsividade */
     @media (min-width: 1441px) {
       .numbered-list {
         flex-direction: row;
@@ -151,7 +193,7 @@
       }
     }
 
-    /* Media Query para telas pequenas */
+    /* Media Query para telas pequenas responsividade*/
     @media (max-width: 1440px) {
       .numbered-list {
         flex-direction: column;
@@ -177,24 +219,7 @@
       border-radius: 20px;
     }
 
-    .plagio_img {
-      display: flex;
-      align-items: center;
-      /* Permite que os elementos quebrem para a próxima linha */
-      justify-content: space-between;
-      /* Centraliza os elementos horizontalmente */
-    }
-
-    .img1 {
-      order: 2;
-      /* flex: 1; /* Ocupa espaço disponível igualmente */
-      max-width: 20%;
-      /* Largura máxima da imagem */
-      /* margin: 10px;  Espaçamento entre a imagem e o texto */
-    }
-
-
-    /* Media query para telas menores que 1440px x 2560px */
+    /* Media query para telas menores que 1440px x 2560px responsividade*/
     @media (max-width: 1440px),
     (max-height: 2560px) {
 
@@ -211,22 +236,6 @@
       align-items: center;
       vertical-align: middle;
       margin-right: 10px;
-    }
-
-
-    .plagio_img2 {
-      display: flex;
-      align-items: center;
-      /* Permite que os elementos quebrem para a próxima linha */
-      justify-content: flex-end;
-      /* Centraliza os elementos horizontalmente */
-    }
-
-    .img2 {
-      /* flex: 1; /* Ocupa espaço disponível igualmente */
-      max-width: 20%;
-      /* Largura máxima da imagem */
-      /* margin: 10px;  Espaçamento entre a imagem e o texto */
     }
 
     .text-content {
@@ -247,7 +256,7 @@
 
     }
 
-    /* Media query para telas menores que 1440px x 2560px */
+    /* Media query para telas menores que 1440px x 2560px, responsividade */
     @media (max-width: 1440px),
     (max-height: 2560px) {
 
@@ -437,7 +446,8 @@
 
     .social-buttons {
       display: flex;
-      flex-direction: column; /* Alinha os elementos verticalmente */
+      flex-direction: column;
+      /* Alinha os elementos verticalmente */
       position: fixed;
       bottom: 100px;
       right: 40px;
@@ -449,11 +459,14 @@
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       z-index: 999;
       /* Garante que o botão fique acima de outros elementos */
-  }
-  .whatsapp-button, .instagram-button {
-    text-align: center;
-    margin-bottom: 20px; /* Aumenta o espaço entre os botões */
-}
+    }
+
+    .whatsapp-button,
+    .instagram-button {
+      text-align: center;
+      margin-bottom: 20px;
+      /* Aumenta o espaço entre os botões */
+    }
 
     .instagram-button img {
       padding-top: 6px;
@@ -466,7 +479,7 @@
       height: 100%;
     }
 
-    .navbar a{
+    .navbar a {
       text-decoration: none;
       color: #333;
       font-size: 20px;
