@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academicos TCC - Seu TCC Aprovado</title>
+  <!-- Adicionando o CSS do Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Estilos para telas menores que 768px (celulares) */
+    @media (max-width: 767px) {
+
+      /* Oculta o formulário */
+      .formulario {
+        display: none;
+      }
+
+      /* Ajusta outros elementos para telas menores */
+      .elemento {
+        width: 100%;
+      }
+    }
+
+    /* Estilos para telas maiores que 768px (tablets e desktops) */
+    @media (min-width: 768px) {
+
+      /* Exibe o formulário */
+      .formulario {
+        display: block;
+      }
+
+      /* Ajusta outros elementos para telas maiores */
+      .elemento {
+        width: 50%;
+      }
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    header h2 {
+      color: black;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .testimonial {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    #fundo_pap {
+      position: absolute;
+      left: 0;
+      /* Alinha à esquerda da página */
+      right: 0;
+      /* Alinha à direita da página */
+      background-color: rgb(0, 125, 242);
+      /* Cor de fundo cinza */
+      /* Outras propriedades que você pode querer manter */
+    }
+
+    #fundo_pap h2 {
+      color: black;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .motivational-phrase {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    OL {
+      list-style-type: none;
+    }
+
+    ol p {
+      text-align: center;
+    }
+
+    .numbered-list img {
+      width: 40px;
+      height: 40px;
+      border-radius: 30px;
+      background-color: black;
+    }
+
+    .numbered-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .numbered-list li {
+      width: 30%;
+      margin: 10px;
+      text-align: center;
+    }
+
+    .numbered-list img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Media Query para telas grandes */
+    @media (min-width: 1441px) {
+      .numbered-list {
+        flex-direction: row;
+      }
+
+      .numbered-list li {
+        width: 20%;
+      }
+    }
+
+    /* Media Query para telas pequenas */
+    @media (max-width: 1440px) {
+      .numbered-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .numbered-list li {
+        width: 100%;
+        margin: 10px 0;
+      }
+    }
+
+    .conteiner-orcamento {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      align-content: center;
+    }
+
+    .img-fluid {
+      width: 450px;
+      height: 350px;
+      border-radius: 20px;
+    }
+
+    .plagio_img {
+      display: flex;
+      align-items: center;
+      /* Permite que os elementos quebrem para a próxima linha */
+      justify-content: space-between;
+      /* Centraliza os elementos horizontalmente */
+    }
+
+    .img1 {
+      order: 2;
+      /* flex: 1; /* Ocupa espaço disponível igualmente */
+      max-width: 20%;
+      /* Largura máxima da imagem */
+      /* margin: 10px;  Espaçamento entre a imagem e o texto */
+    }
+
+
+    /* Media query para telas menores que 1440px x 2560px */
+    @media (max-width: 1440px),
+    (max-height: 2560px) {
+
+      .img1,
+      .text-content {
+        max-width: 100%;
+        /* Ocupa toda a largura em telas menores */
+      }
+    }
+
+    .img1 img {
+      height: 250px;
+      width: 300px;
+      align-items: center;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+
+    .plagio_img2 {
+      display: flex;
+      align-items: center;
+      /* Permite que os elementos quebrem para a próxima linha */
+      justify-content: flex-end;
+      /* Centraliza os elementos horizontalmente */
+    }
+
+    .img2 {
+      /* flex: 1; /* Ocupa espaço disponível igualmente */
+      max-width: 20%;
+      /* Largura máxima da imagem */
+      /* margin: 10px;  Espaçamento entre a imagem e o texto */
+    }
+
+    .text-content {
+      flex: 1;
+      /* Ocupa espaço disponível igualmente */
+      min-width: 50%;
+      /* Largura máxima do texto */
+      margin: 10px;
+      /* Espaçamento entre a imagem e o texto */
+      text-align: center;
+      /* Centraliza o texto horizontalmente */
+    }
+
+    .text-content h2 p {
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
+
+    }
+
+    /* Media query para telas menores que 1440px x 2560px */
+    @media (max-width: 1440px),
+    (max-height: 2560px) {
+
+      .img2,
+      .text-content {
+        max-width: 100%;
+        /* Ocupa toda a largura em telas menores */
+      }
+    }
+
+    .img2 img {
+      height: 250px;
+      width: 300px;
+      vertical-align: middle;
+    }
+
+
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      /* Cor escura para o título */
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #666;
+      /* Cor mais clara para o texto */
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #007bff;
+      /* Cor de destaque para palavras-chave */
+    }
+
+    /* visualizção de pedidos */
+    .div-cinza {
+      background-color: lightgray;
+      /* Cor de fundo cinza */
+      padding: 20px;
+      /* Espaçamento interno */
+    }
+
+    .informacoes {
+      display: flex;
+      /* Alinha os itens horizontalmente */
+      flex-wrap: wrap;
+      /* Permite que os itens quebrem para a próxima linha */
+      justify-content: space-around;
+      /* Distribui os itens uniformemente */
+    }
+
+    .titulo {
+      font-size: 24px;
+      /* Tamanho da fonte do título */
+      font-weight: bold;
+      /* Texto em negrito */
+      margin-bottom: 10px;
+      /* Espaçamento inferior */
+      text-align: center;
+      /* Centraliza o texto */
+      width: 100%;
+      /* Ocupa toda a largura */
+    }
+
+    .item {
+      display: flex;
+      /* Alinha o número e a descrição horizontalmente */
+      flex-direction: column;
+      /* Alinha o número e a descrição verticalmente */
+      align-items: center;
+      /* Centraliza o conteúdo */
+      margin: 10px;
+      /* Espaçamento entre os itens */
+    }
+
+    .numero {
+      font-size: 20px;
+      /* Tamanho da fonte do número */
+      font-weight: bold;
+      /* Texto em negrito */
+    }
+
+    .descricao {
+      font-size: 14px;
+      /* Tamanho da fonte da descrição */
+    }
+
+    .depoimentos {
+      overflow: hidden;
+      width: 91%;
+      /* Ajustado para mostrar 3 imagens */
+      position: relative;
+      margin: auto;
+      /* Centraliza o carrossel */
+    }
+
+    .depoimento-container {
+      display: flex;
+      transition: transform 3s linear;
+      width: fit-content;
+      justify-content: center;
+      gap: 30px;
+      /* Espaço de 10px entre as imagens */
+    }
+
+    .depoimento {
+      min-width: 300px;
+      /* Largura individual das imagens */
+    }
+
+    .depoimento img {
+      width: 100%;
+    }
+
+    .depoimento img {
+      width: 300px;
+      /* Largura da imagem */
+      height: 400px;
+      /* Altura automática */
+    }
+
+    .contato {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      /* Posição inicial */
+      100% {
+        transform: translateX(calc(-100% * (var(--total-items) - 1)));
+      }
+
+      /* Posição final */
+    }
+
+    /* faq de pergubtas */
+    .faq-container {
+      width: 80%;
+      margin: 0 auto;
+      font-family: sans-serif;
+    }
+
+    .faq-item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .faq-question h5 {
+      margin: 0;
+    }
+
+    .faq-icon {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      padding: 10px;
+      display: none;
+      transition: height 0.3s ease;
+      /* Adiciona transição para altura */
+    }
+
+    .container-footer p {
+      text-align: center;
+    }
+
+
+    .social-buttons {
+      display: flex;
+      flex-direction: column; /* Alinha os elementos verticalmente */
+      position: fixed;
+      bottom: 100px;
+      right: 40px;
+      display: block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      /* Cor verde do WhatsApp */
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      /* Garante que o botão fique acima de outros elementos */
+  }
+  .whatsapp-button, .instagram-button {
+    text-align: center;
+    margin-bottom: 20px; /* Aumenta o espaço entre os botões */
+}
+
+    .instagram-button img {
+      padding-top: 6px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .whatsapp-button img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <script>
+    function enviarFormulario() {
+      // Obtenha os valores dos campos do formulário
+      var nome = document.getElementById("nome").value;
+      var email = document.getElementById("email").value;
+      var telefone = document.getElementById("telefone").value;
+      var tipoProducao = document.getElementById("tipo-producao").value;
+
+      // Crie a mensagem do WhatsApp
+      var mensagem = "Olá, gostaria de solicitar um orçamento:\n" +
+        "Nome: " + nome + "\n" +
+        "Email: " + email + "\n" +
+        "Telefone: " + telefone + "\n" +
+        "Tipo de Produção: " + tipoProducao;
+
+      // Formate a mensagem para o WhatsApp
+      mensagem = encodeURIComponent(mensagem);
+
+      // Crie o link para o WhatsApp
+      var link = "https://wa.me/92984721800?text=" + mensagem;
+
+      // Abra o link em uma nova janela
+      window.open(link, "_blank");
+    }
+    /* limpar o formulario ao recarregar */
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById("orcamento-form").reset();
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h2>Seu TCC está pendente? Confie nos nossos professores especializados!</h2>
+    <!-- <h2>Nossos materiais são únicos, de elevada qualidade e 100% livres de plágio</h2> -->
+  </header>
+
+  <section class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Academicos TCC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Serviços</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Artigo Acadêmico</a>
+              <a class="dropdown-item" href="#">Dissertação</a>
+              <a class="dropdown-item" href="#">Estudo de Caso</a>
+              <a class="dropdown-item" href="#">Fichamento</a>
+              <a class="dropdown-item" href="#">Formatação</a>
+              <a class="dropdown-item" href="#">Monografia</a>
+              <a class="dropdown-item" href="#">PIM</a>
+              <a class="dropdown-item" href="#">Portfólio</a>
+              <a class="dropdown-item" href="#">Power Point</a>
+              <a class="dropdown-item" href="#">Projeto de Extensão</a>
+              <a class="dropdown-item" href="#">Projeto de Pesquisa</a>
+              <a class="dropdown-item" href="#">Projeto de TCC</a>
+              <a class="dropdown-item" href="#">Resenha</a>
+              <a class="dropdown-item" href="#">Relatório</a>
+              <a class="dropdown-item" href="#">Resumo</a>
+              <a class="dropdown-item" href="#">TCC</a>
+              <a class="dropdown-item" href="#">Tese de Doutorado</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link"
+              href="https://wa.me/92984721800?text=Olá,%20gostaria%20de%20saber%20mais%sobre%os%serviços"
+              target="blank">Contato</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <img src="logo.jpg" alt="Descrição da imagem" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <p class="motivational-phrase">"A persistência realiza o impossível."</p>
+        <form id="orcamento-form" class="mt-3">
+          <div class="form-group">
+            <input type="text" id="nome" name="nome" class="form-control" placeholder="NOME" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" class="form-control" placeholder="EMAIL" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="telefone" name="telefone" class="form-control"
+              placeholder="SEU WHATSAPP (DDD) 9XXXX-XXXX" required>
+          </div>
+          <div class="form-group">
+            <label for="tipo-producao">Qual tipo de produção você precisa?</label>
+            <select id="tipo-producao" class="form-control">
+              <option value="artigo">Artigo Acadêmico</option>
+              <option value="dissertacao">Dissertação</option>
+              <option value="estudo-caso">Estudo de Caso</option>
+              <option value="fichamento">Fichamento</option>
+              <option value="formatacao">Formatação</option>
+              <option value="monografia">Monografia</option>
+              <option value="pim">PIM</option>
+              <option value="portfolio">Portfólio</option>
+              <option value="powerpoint">Power Point</option>
+              <option value="extensao">Projeto de Extensão</option>
+              <option value="pesquisa">Projeto de Pesquisa</option>
+              <option value="pesquisa-mestrado">Projeto de Pesquisa Mestrado</option>
+              <option value="tcc">Projeto de TCC</option>
+              <option value="resenha">Resenha</option>
+              <option value="relatorio">Relatório</option>
+              <option value="resumo">Resumo</option>
+              <option value="tcc">TCC</option>
+              <option value="tese">Tese de Doutorado</option>
+            </select>
+          </div>
+          <button class="btn btn-success" type="submit" onclick="enviarFormulario()">Enviar</button>
+        </form>
+      </div>
+    </div>
+    <br><br>
+    <div id="fundo_pap">
+      <h2 class="mt-5">Com nossos materiais de apoio exclusivos e de alta qualidade, todos livres de plágio, veja o
+        passo
+        a passo do Mentoria Acadêmica:</h2>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 1.png" alt="Número 1">
+          <h3>Envie o Modelo do seu Trabalho</h3>
+          <p>Compartilhe os detalhes do seu projeto conosco.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 2.png" alt="Número 2">
+          <h3>Receba um Orçamento Sob Medida</h3>
+          <p>Analisaremos o seu projeto e lhe enviaremos uma proposta.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 3.png" alt="Número 3">
+          <h3>Confirmação do Cliente</h3>
+          <p>Após sua verificação da proposta, nos contate para seguirmos adiante.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 4.png" alt="Número 4">
+          <h3>Compromisso com prazos Urgentes</h3>
+          <p>Garantimos pontualidade e eficiência mesmo em prazos apertados.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 5.png" alt="Número 5">
+          <h3>Acompanhamento Personalizado</h3>
+          <p>Um acompanhamento sob medida para as suas necessidades.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 6.png" alt="Número 6">
+          <h3>Notificação de Conclusão</h3>
+          <p>Receba a nossa notificação após a conclusão do seu projeto.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 7.png" alt="Número 7">
+          <h3>Pré-visualização Exclusiva</h3>
+          <p>Antes de finalizar, confira cada detalhe do seu projeto com nossa Pré-visualização Exclusiva.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 8.png" alt="Número 8">
+          <h3>Pagamento Seguro</h3>
+          <p>Garantimos a segurança do seu pagamento do início ao fim.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="column">
+      <ol class="numbered-list">
+        <li>
+          <img src="numero 9.png" alt="Número 9">
+          <h3>Pedido Entregue</h3>
+          <p>É com grande alegria que entregamos o seu pedido, feito com todo o cuidado para você.</p>
+        </li>
+      </ol>
+    </div>
+    </div>
+    <!-- <div class="conteiner-orcamento">
+      <a id="orcamento" class="cta-button btn btn-primary" href="#">Solicitar um Orçamento</a>
+    </div> -->
+    <br><br><br>
+    <div class="plagio_img2">
+      <figure class="img2">
+        <img src="SPIDER.png" alt="">
+      </figure>
+      <div class="text-content">
+        <h2 class="mt-5">Temos um sistema anti-plágio</h2>
+        <p>Quando desenvolvemos um projeto para nossos clientes a ideia é que ele seja 100% autoral. Com a Mentoria
+          Acadêmica, a originalidade do seu trabalho é inegociável. Nosso sistema antiplágio de última geração
+          garante
+          que cada texto seja único e autêntico, blindando você contra qualquer risco de plágio e assegurando a
+          integridade
+          acadêmica que você merece.</p>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="div-cinza">
+      <div class="informacoes">
+        <div class="titulo">Números que Contam Nossa História</div>
+        <div class="item">
+          <div class="numero">+ de 10</div>
+          <div class="descricao">Especialistas</div>
+        </div>
+        <div class="item">
+          <div class="numero">+ de 10</div>
+          <div class="descricao">Áreas de atuação</div>
+        </div>
+        <div class="item">
+          <div class="numero">+ de 12.500</div>
+          <div class="descricao">Trabalhos entregues</div>
+        </div>
+        <div class="item">
+          <div class="numero">4</div>
+          <div class="numero">Anos de atuação</div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+
+    <div class="depoimentos">
+      <div class="depoimento-container">
+        <div class="depoimento">
+          <img src="depoimento 1.jpg" alt="Depoimento 1">
+        </div>
+        <div class="depoimento">
+          <img src="depoimento 2.jpg" alt="Depoimento 2">
+        </div>
+        <div class="depoimento">
+          <img src="depoimento 3.jpg" alt="Depoimento 3">
+        </div>
+        <div class="depoimento">
+          <img src="depoimento 4.jpg" alt="Depoimento 4">
+        </div>
+        <div class="depoimento">
+          <img src="depoimento 5.jpg" alt="Depoimento 4">
+        </div>
+        <div class="depoimento">
+          <img src="depoimento 6.jpg" alt="Depoimento 4">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector('.depoimento-container');
+      let index = 0;
+
+      function nextSlide() {
+        index++;
+        if (index > 3) {
+          setTimeout(() => {
+            container.style.transition = 'none';
+            index = 0;
+            updateCarousel();
+          }, 3000);
+          return;
+        }
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        container.style.transform = `translateX(-${index * 300}px)`;
+        container.style.transition = 'transform 7s linear';
+      }
+
+      setInterval(nextSlide, 3000);
+    </script>
+
+    <br><br><br>
+    <div class="plagio_img">
+      <figure class="img1">
+        <img src="juntese a nos.png" alt="">
+      </figure>
+      <div class="text-content">
+        <h2 class="mt-5">Junte-se ao Time de Maior Sucesso do Brasil!</h2>
+        <p>Nossos professores, especializados em diversas áreas, estão prontos para guiá-lo no caminho do sucesso. Com
+          uma
+          abordagem personalizada e métodos comprovados, estamos comprometidos em elevar seu potencial ao máximo.
+          Estamos na
+          vanguarda da produção textual, oferecendo serviços que não apenas impulsionam sua carreira, mas também
+          garantem
+          sucesso em qualquer área de atuação. Nosso compromisso é com a excelência e com resultados que falam por si.
+          Entre
+          em contato conosco hoje mesmo e dê o primeiro passo rumo ao topo!</p>
+      </div>
+    </div>
+    <div class="contato"><a class="btn btn-success" type="submit" onclick="enviarFormulario()">Chame no WhatsApp para
+        mais informações!</a>
+    </div>
+    <br><br>
+    <div class="plagio_img2">
+      <figure class="img2">
+        <img src="perigo.png" alt="">
+      </figure>
+      <div class="text-content">
+        <h2 class="mt-5">É Risco ZERO!</h2>
+        <p>Se não ficar completamente satisfeito com nosso material, nós faremos as revisões necessárias até que atenda
+          às
+          suas expectativas ou, se preferir, realizaremos o reembolso integral do valor investido, sem questionamentos.
+          Estamos aqui para garantir sua total satisfação! Basta enviar um e-mail para nosso suporte e providenciaremos
+          o
+          reembolso imediato, sem complicações. Sua satisfação é nossa prioridade absoluta!</p>
+      </div>
+    </div>
+
+
+    <!-- <a class="cta-button btn btn-primary" href="#">Entrar em Contato Agora!</a> -->
+
+    <h2 class="mt-5">Por que somos a melhor e mais completa Assessoria Acadêmica do mercado?</h2>
+    <ul>
+      <li><strong>Melhores Redatores:</strong> Nossa equipe é composta pelos melhores redatores do mercado,
+        especializados em diversas áreas do conhecimento.</li>
+      <li><strong>Preços Acessíveis:</strong> Oferecemos preços acessíveis para garantir que nossos serviços estejam
+        ao
+        alcance de todos os estudantes.</li>
+      <li><strong>Cumprimento dos Prazos:</strong> Nos comprometemos a entregar seu material dentro do prazo
+        estipulado,
+        sem atrasos.</li>
+      <li><strong>Exclusividade:</strong> Cada material é elaborado sob medida, garantindo a exclusividade e
+        originalidade do conteúdo.</li>
+      <li><strong>Assessoria e Acompanhamento Online:</strong> Oferecemos suporte e acompanhamento online durante todo
+        o
+        processo, garantindo sua tranquilidade e confiança.</li>
+      <li><strong>Agilidade e Rapidez:</strong> Nossa equipe trabalha de forma ágil e eficiente para garantir a
+        entrega
+        rápida e de qualidade do seu documento.</li>
+      <li><strong>Contra Plágio:</strong> Garantimos a originalidade de cada projeto, utilizando as melhores práticas
+        para evitar qualquer forma de plágio.</li>
+      <li><strong>Apresentações Dinâmicas:</strong> Se necessário, também podemos criar apresentações dinâmicas para
+        complementar.</li>
+      <li><strong>Profissionais de Diversas Áreas:</strong> Contamos com uma equipe diversificada de profissionais
+        especializados em diferentes áreas de estudo.</li>
+      <li><strong>Atendemos Prazos Urgentes:</strong> Se você está com um prazo apertado, não se preocupe. Atendemos
+        produções com urgência para ajudar você a cumprir seus prazos.</li>
+      <li><strong>Regras ABNT e Formatação:</strong> Seguimos rigorosamente as normas da ABNT e garantimos uma
+        formatação impecável para o seu documento.</li>
+      <li><strong>Profissionalismo e Transparência:</strong> Nosso compromisso é com a transparência e o
+        profissionalismo em todas as etapas do processo.</li>
+    </ul>
+    <div class="contato"><a class="btn btn-success" type="submit" onclick="enviarFormulario()">Faça um Orçamento
+        Agora!</a></div>
+
+    <section id="sobre" name="sobre" class="mt-5">
+      <h2>Sobre a Academia TCC</h2>
+      <p>Compreendemos os desafios do mundo acadêmico e estamos aqui para simplificar sua jornada. A Mentoria Acadêmica
+        é um farol de conhecimento e apoio, guiando você rumo ao sucesso. Nossa missão é clara: oferecer
+        serviços acadêmicos de alta qualidade, impulsionando o desenvolvimento de trabalhos impecáveis e livres de
+        plágio. Queremos ser o catalisador do seu sucesso, desde a concepção da ideia até a defesa do seu projeto.
+        Contamos com uma equipe de especialistas apaixonados por educação e com expertise em diversas áreas do
+        conhecimento. Profissionais experientes e qualificados, prontos para oferecer suporte personalizado e
+        transformar suas ideias em projetos de destaque.</p>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <div class="contato"><a class="btn btn-success" type="submit" onclick="enviarFormulario()">Quero fazer parte!</a>
+    </div>
+
+
+    <h2 class="mt-5">FAQ - Perguntas Frequentes</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Qual é o processo de compra?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>O processo de compra é simples e rápido. Basta escolher o produto desejado, adicionar ao carrinho, informar
+            seus dados e efetuar o pagamento. Em seguida, você receberá um email de confirmação com os detalhes da sua
+            compra.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Os trabalhos são originais?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, todos os nossos trabalhos são 100% originais e personalizados para cada cliente. Utilizamos
+            ferramentas de detecção de plágio para garantir a autenticidade do conteúdo.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Posso solicitar revisões?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, você pode solicitar revisões ilimitadas até que o trabalho esteja do seu agrado. Queremos garantir a
+            sua total satisfação com o resultado final.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Como posso ter certeza da qualidade do projeto?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Você pode verificar a qualidade do projeto através de amostras de trabalhos anteriores e depoimentos de
+            outros clientes. Além disso, oferecemos garantia de satisfação e reembolso caso o resultado não atenda às
+            suas expectativas.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Vocês oferecem suporte após a entrega do material?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, oferecemos suporte completo após a entrega do material para tirar dúvidas, auxiliar na implementação e
+            garantir que você tenha o melhor aproveitamento do seu projeto.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h5>Como são os métodos de pagamento?</h5>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Aceitamos diversas formas de pagamento, como cartão de crédito, boleto bancário e transferência online.
+            Você pode escolher a opção mais conveniente para você.</p>
+        </div>
+      </div>
+    </div>
+    <div class="contato"><a class="cta-button btn btn-primary" href="#">Tire suas Dúvidas!</a></div>
+
+
+    <script>
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+
+        question.addEventListener('click', () => {
+          answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+          icon.textContent = answer.style.display === 'block' ? '-' : '+';
+        });
+      });
+    </script>
+
+    <h2 class="mt-5">O sucesso espera por você!</h2>
+    <p>Em um mar de opções, a Mentoria Acadêmica se destaca por um diferencial que vai além dos serviços
+      acadêmicos:
+      a paixão pela sua história de sucesso. Não somos apenas uma prestadora de serviços, somos parceiros da sua
+      jornada, comprometidos em oferecer um suporte que transforma desafios em conquistas. Trabalhamos com
+      transparência
+      e compromisso para que você se sinta seguro e confiante em cada passo da sua jornada.</p>
+    <p>Siga-nos <a
+        href="https://www.instagram.com/metoriaacademica?utm_source=qr&igsh=MTMzNmVjdTNyY2c4eg==">@mentoriaacademica</a>
+    </p>
+  </section>
+  <div class="social-buttons">
+    <a href="https://wa.me/92984721800" target="blank" class="whatsapp-button">
+      <img src="logo_whatsapp.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.instagram.com/metoriaacademica?utm_source=qr&igsh=MTMzNmVjdTNyY2c4eg==" target="blank"
+      class="instagram-button">
+      <img src="logo instagram.png" alt="Instagram">
+    </a>
+  </div>
+
+  <footer class="bg-dark text-white mt-5">
+    <div class="container-footer text-center">
+      <p>Mentoria Acadêmica | © 2025 – Todos os Direitos Reservados. <a href="#" class="text-white">Política de
+          Privacidade</a></p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
